@@ -24,5 +24,5 @@ paster --plugin=ckanext-dcatapit vocabulary load --filename "/tmp/Licenze.rdf" -
 paster --plugin=ckanext-dcatapit vocabulary load --filename "$EUROVOC_TO_THEMES_MAPPING_FILE" --name subthemes --config "$CKAN_INI_PATH" "$PATH_TO_EUROVOC"
 
 
-APIKEY=$(psql -q -t -h db -U postgres -d ckan -c "select apikey from public.user where name='ckanadmin';")
+APIKEY=$(psql -q -t -h db -U $CKAN_DB_USER -p $CKAN_DB_PASS -d ckan -c "select apikey from public.user where name='ckanadmin';")
 ${CKAN_HOME}/data/init/create.sh $APIKEY localhost:5000
